@@ -10,4 +10,4 @@ A method that determines if all the boxes can be opened.
 + The first box boxes[0] is unlocked
 + Return True if all boxes can be opened, else return False
 
-[main_0.py](https://github.com/Yosef-S-A/alx-interview/blob/main/0x01-lockboxes/test/0-main.py) is the code used to test the method.
+[main_0.py](https://github.com/Minte123/alx-interview/blob/master/0x01-lockboxes/test/0-main.py) is the code used to test the method.
