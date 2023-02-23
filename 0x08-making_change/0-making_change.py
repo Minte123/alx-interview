@@ -1,39 +1,29 @@
 #!/usr/bin/python3
 """
-Change comes from within
+Make changes
 """
 
 
 def makeChange(coins, total):
-    '''
-    calculate the the fewest number of coins needed to meet
-    a given amount total
-    Parameters
-    ----------
-    coins : list
-    total : int
-    Returns
-    _______
-    int: number of coins
-    '''
+    """ make changes """
     if total <= 0:
         return 0
 
-    placeholder = total + 1
-
-    memo = {0: 0}
-
-    for i in range(1, total + 1):
-        memo[i] = placeholder
-
-        for coin in coins:
-            current = i - coin
-            if current < 0:
-                continue
-
-            memo[i] = min(memo[current] + 1, memo[i])
-
-    if memo[total] == total + 1:
-        return -1
-
-    return memo[total]
+    def combSum(candidates, target, index, cur, res):
+        """ helper function """
+        if target <= 0:
+            if target == 0:
+                res.append(cur[::])
+            return
+        if res:
+            return
+        for i in range(index, len(candidates)):
+            val = candidates[i]
+            cur.append(val)
+            combSum(candidates, target - val, i, cur, res)
+            last = cur.pop()
+        return res
+    res = combSum(sorted(list(set(coins)), reverse=True), total, 0, [], [])
+    if res:
+        return len(res[0])
+    return -1
